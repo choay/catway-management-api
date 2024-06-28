@@ -1,16 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <meta charset="UTF-8">
+    <title>Tableau de bord</title>
 </head>
 <body>
-    <h1>Dashboard</h1>
-    <p>Welcome, <%= user.name %>!</p>
-    <p>Manage catways and reservations from here.</p>
-    <ul>
-        <li><a href="/catways">View all catways</a></li>
-        <li><a href="/catways/new">Create a new catway</a></li>
-    </ul>
+    <h1>Tableau de bord</h1>
+
+    <h2>Gestion des utilisateurs</h2>
+    <form action="/users/create" method="post">
+        <h3>Créer un utilisateur</h3>
+        <div>
+            <label for="name">Nom:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit">Créer</button>
+        </div>
+    </form>
+
+    <form action="/users/update/:id" method="post">
+        <h3>Modifier un utilisateur</h3>
+        <div>
+            <label for="userId">ID de l'utilisateur à modifier:</label>
+            <input type="text" id="userId" name="userId" required>
+        </div>
+        <div>
+            <label for="name">Nouveau nom:</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div>
+            <label for="email">Nouvel email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div>
+            <button type="submit">Modifier</button>
+        </div>
+    </form>
+
+    <form action="/users/delete/:id" method="post">
+        <h3>Supprimer un utilisateur</h3>
+        <div>
+            <label for="userId">ID de l'utilisateur à supprimer:</label>
+            <input type="text" id="userId" name="userId" required>
+        </div>
+        <div>
+            <button type="submit">Supprimer</button>
+        </div>
+    </form>
+
+    <h2>Gestion des catways</h2>
+    <form action="/catways/create" method="post">
+        <h3>Créer un catway</h3>
+        <div>
+            <label for="catwayNumber">Numéro de Catway:</label>
+            <input type="text" id="catwayNumber" name="catwayNumber" required>
+        </div>
+        <div>
+            <label for="type">Type:</label>
+            <select id="type" name="type" required>
+                <option value="long">Long</option>
+                <option value="short">Short</option>
+            </select>
+        </div>
+        <div>
+            <label for="catwayState">État:</label>
+            <input type="text" id="catwayState" name="catwayState" required>
+        </div>
+        <div>
+            <button type="submit">Créer</button>
+        </div>
+    </form>
+
+    <form action="/catways/update/:id" method="post">
+        <h3>Modifier la description de l'état d'un catway</h3>
+        <div>
+            <label for="catwayId">ID du Catway:</label>
+            <input type="text" id="catwayId" name="catwayId" required>
+        </div>
+        <div>
+            <label for="catwayState">Nouvelle description de l'état:</label>
+            <input type="text" id="catwayState" name="catwayState" required>
+        </div>
+        <div>
+            <button type="submit">Modifier</button>
+        </div>
+    </form>
+
+    <form action="/catways/delete/:id" method="post">
+        <h3>Supprimer un catway</h3>
+        <div>
+            <label for="catwayId">ID du Catway à supprimer:</label>
+            <input type="text" id="catwayId" name="catwayId" required>
+        </div>
+        <div>
+            <button type="submit">Supprimer</button>
+        </div>
+    </form>
+
+    <form action="/catways/details/:id" method="get">
+        <h3>Afficher les détails d'un catway</h3>
+        <div>
+            <label for="catwayId">ID du Catway:</label>
+            <input type="text" id="catwayId" name="catwayId" required>
+        </div>
+        <div>
+            <button type="submit">Afficher les détails</button>
+        </div>
+    </form>
+
+    <h2>Gestion des réservations</h2>
+    <form action="/reservations/create" method="post">
+        <h3>Enregistrer une réservation</h3>
+        <div>
+            <label for="catwayNumber">Numéro du Catway:</label>
+            <input type="text" id="catwayNumber" name="catwayNumber" required>
+        </div>
+        <div>
+            <label for="clientName">Nom du client:</label>
+            <input type="text" id="clientName" name="clientName" required>
+        </div>
+        <div>
+            <label for="boatName">Nom du bateau:</label>
+            <input type="text" id="boatName" name="boatName" required>
+        </div>
+        <div>
+            <label for="checkIn">Date de début:</label>
+            <input type="date" id="checkIn" name="checkIn" required>
+        </div>
+        <div>
+            <label for="checkOut">Date de fin:</label>
+            <input type="date" id="checkOut" name="checkOut" required>
+        </div>
+        <div>
+            <button type="submit">Enregistrer</button>
+        </div>
+    </form>
+
+    <form action="/reservations/delete/:id" method="post">
+        <h3>Supprimer une réservation</h3>
+        <div>
+            <label for="reservationId">ID de la réservation à supprimer:</label>
+            <input type="text" id="reservationId" name="reservationId" required>
+        </div>
+        <div>
+            <button type="submit">Supprimer</button>
+        </div>
+    </form>
+
+    <form action="/reservations/details/:id" method="get">
+        <h3>Afficher les détails d'une réservation</h3>
+        <div>
+            <label for="reservationId">ID de la réservation:</label>
+            <input type="text" id="reservationId" name="reservationId" required>
+        </div>
+        <div>
+            <button type="submit">Afficher les détails</button>
+        </div>
+    </form>
+
+    <p><a href="/catways">Liste des catways</a></p>
+    <p><a href="/catways/reservations">Liste des réservations</a></p>
 </body>
 </html>

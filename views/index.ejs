@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>API Documentation</title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <meta charset="UTF-8">
+    <title>Accueil</title>
 </head>
 <body>
-    <h1>Welcome to the Catway Management API</h1>
-    <p>Use the following endpoints to interact with the API:</p>
-    <ul>
-        <li>GET /catways</li>
-        <li>GET /catways/:id</li>
-        <li>POST /catways</li>
-        <li>PUT /catways/:id</li>
-        <li>DELETE /catways/:id</li>
-        <li>GET /catways/:id/reservations</li>
-        <li>GET /catways/:id/reservations/:idReservation</li>
-        <li>POST /catways/:id/reservations</li>
-        <li>DELETE /catways/:id/reservations/:idReservation</li>
-    </ul>
+    <h1>Bienvenue sur l'application de gestion de catways</h1>
+    <p>Cette application permet de gérer les réservations et l'état des catways dans le port de plaisance.</p>
+
+    <h2>Se connecter</h2>
+    <form action="/login" method="post">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit">Connexion</button>
+        </div>
+    </form>
+
+    <p><a href="/users/register">Inscription</a></p>
+    <p><a href="/users/documentation">Documentation de l'API</a></p>
+    <p><a href="/users/dashboard">Le tableau de bord</a></p>
 </body>
 </html>

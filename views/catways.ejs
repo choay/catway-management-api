@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Catways</title>
+</head>
+<body>
+    <h1>Liste des Catways</h1>
+    <ul>
+        <% catways.forEach(catway => { %>
+            <li><%= catway.catwayNumber %> - <%= catway.type %> - <%= catway.catwayState %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>

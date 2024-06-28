@@ -61,6 +61,9 @@ router.get('/dashboard', (req, res) => {
 router.get('/', (req, res) => {
   res.render('index');
 });
+router.get('/documentation', (req, res) => {
+  res.render('documentation');
+});
 
 
 
